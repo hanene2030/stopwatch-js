@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+button {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: red;
+  color: white;
+  border: solid 1px white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 26px;
+  padding: 18px 10px;
+  width: 180px;
+  margin: 10px;
+  outline: none;
+}
+button:hover {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  background: white;
+  border: solid 1px white;
+  color: red;
+}
+
+</style>
+</head>
+
+<body style="background-color:red;color:white; text-align:center">
+
+<section>
+<h1 style="font-size:56px;">Stopwatch</h1>
+<h2 style="font-size:36px;">Vanilla JavaScript Stopwatch</h2>
+<p>Exercice description is available in this link : https://mikkegoes.com/javascript-projects-for-beginners/</p>
+<p style="font-size:26px;"><span id="seconds">00</span>:<span id="tens">00</span></p>
+<button id="startBtn">Start</button>
+<button id="stopBtn">Stop</button>
+<button id="resetBtn">Reset</button>
+</div> 
+
+<script>
+
+  var startBtn = document.getElementById('startBtn');
+  var stopBtn = document.getElementById('stopBtn');
+  var resetBtn = document.getElementById('resetBtn');
+  
+  var interval ;
+  
+ 
+  var tensElement = document.getElementById("tens");
+  var secondsElement = document.getElementById("seconds");
+  
+  var seconds = 0; 
+  var tens = 0; 
+
+
+  
+
+ startBtn.onclick = function() {
+    clearInterval(interval);
+ 	interval = 	setInterval(printTime, 10);
+}
+  
+ stopBtn.onclick = function() {
+    clearInterval(interval);
+} 
+
+ resetBtn.onclick = function() {
+	clearInterval(interval);
+	tensElement.innerHTML = "00";
+  	secondsElement.innerHTML = "00";   
+}
+   
+ function printTime () {
+    tens++; 
+    
+    if(tens < 9){
+      tensElement.innerHTML = "0" + tens;
+    }
+    if (tens > 9){
+      tensElement.innerHTML = tens;
+      
+    }
+	if (tens > 99) {
+      seconds++;
+      secondsElement.innerHTML = "0" + seconds;
+      tens = 0;
+      tensElement.innerHTML = "00" ;
+    }
+    
+    if (seconds > 9){
+      secondsElement.innerHTML = seconds;
+    }
+  
+  }
+  
+
+
+
+
+
+</script>
+
+</body>
+</html>
